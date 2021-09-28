@@ -1,0 +1,17 @@
+<h2 class="title">体重記録</h2>
+
+<%= form_with model: @measurement, local: true do |f| %>
+ <div class="form_with">
+   <label>月</label>
+   <%= f.number_field :month, class: "form_control" %>
+ </div>
+ <div class="form_with">
+   <label>日付</label>
+   <%= f.number_field :day, class: "form_control" %>
+ </div>
+ <div class="form_with">
+   <label>体重</label>
+   <%= f.number_field :weight, class: "form_control" %>
+ </div>
+ <%= f.submit "登録", class: "btn btn-primary"%>
+<% end %>

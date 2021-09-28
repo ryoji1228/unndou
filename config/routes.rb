@@ -1,37 +1,21 @@
 Rails.application.routes.draw do
-  devise_for :views
+  root to: 'statics#index'
+  
   devise_for :users
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   
   
-  post "/measurements", to: "measurements#create"
-  get "/measurements", to: "measurements#index"
-  get "/measurements/:id", to: "measurements#destroy"
-  
-  get "/exercises", to: "exercises#new"
-  post "/exercises", to: "exercises#create"
-  get "/exercises", to: "exercises#index"
-  get "/exercises/:id/edit", to: "exercises#edit"
-  patch "/exercises/:id/edit", to: "exercises#update"
-  get "/exercises/:id", to: "exercises#show"
-  delete "/exercises/:id", to: "exercises#destroy"
-  
-  post "/posts", to: "posts#create"
-  get "/posts", to: "posts#index"
-  delete "/posts",to: "posts#destroy"
-  
-  post "/likes", to: "likes#create"
-  delete "/likes/:id", to: "likes#destroy"
-  get "/likes", to: "likes#index"
-  
-  get "/admin-prefix/posts", to: "posts#index"
-  delete "/admin-prefix/posts/:id",to: "posts#destroy"
-  get "/admin-prefix/users", to: "users#index"
-  delete "/admin-prefix/users/:id", to: "users#destroy"
-  get "/admin-prefix/auth", to: "auth#new"
-  post "/admin-prefix/auth", to: "auth#create"
-  
-  
-  root to: 'statics#index'
+  resources :measurements ,only: [:index, :create, :new]
+
+  resources :exercises 
+  resources :posts ,only:[:create, :index, :destroy]
+  resources :likes ,only:[:create, :destroy, :index]
+ 
+  namespace :admin do
+    resources :posts, only: [:index, :destroy]
+    resources :users, only: [:index, :destroy]
+    resources :auth, only: [:new, :create]
+    resources :works
+  end
   
 end
