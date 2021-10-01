@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   
   resources :measurements ,only: [:index, :create, :new]
 
-  resources :exercises 
+  resources :exercises
   resources :posts ,only:[:create, :index, :destroy]
   resources :likes ,only:[:create, :destroy, :index]
  

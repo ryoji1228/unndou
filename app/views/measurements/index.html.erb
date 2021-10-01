@@ -1,14 +1,13 @@
 <h2 class="title">体重記録</h2>
 
+<%= line_chart @measurements.pluck(:date, :weight) %>
+
 <%= form_with model: @measurement, local: true do |f| %>
  <div class="form_with">
-   <label>月</label>
-   <%= f.number_field :month, class: "form_control" %>
- </div>
- <div class="form_with">
    <label>日付</label>
-   <%= f.number_field :day, class: "form_control" %>
+   <%= f.date_field :date, class: "form_control" %>
  </div>
+ 
  <div class="form_with">
    <label>体重</label>
    <%= f.number_field :weight, class: "form_control" %>
