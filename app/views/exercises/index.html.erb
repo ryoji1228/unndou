@@ -1,16 +1,26 @@
 <h1 class="title">運動履歴一覧</h1>
 <%= link_to "運動登録", new_exercise_path, class: "btn btn-primary" %>
-<table>
-  <tr>
-    <th>日付</th>
-    <th>運動</th>
-    <th>消費カロリー</th>
-  </tr>
-  <% @exercises.each do |exercise| %>
+<table class="table">
+  <thead class="table-light">
     <tr>
-        <td></td>
-        <td></td>
-        <td></td>
+      <th>日付</th>
+      <th>運動</th>
+      <th>消費カロリー</th>
+      <th></th>
     </tr>
-  <% end %>
+  </thead>
+  <tbody>
+    <% @exercises.each do |exercise| %>
+      <tr>
+          <td><%= exercise.date.strftime("%Y年%-m月%-d日") %></td>
+          <td><%= exercise.work.name %></td>
+          <td></td>
+          <td>
+            <%= link_to "詳細", exercise_path(exercise), class: "btn btn-info" %>
+            <%= link_to "編集", edit_exercise_path(exercise), class: "btn btn-warning" %> 
+            <%= link_to "削除", exercise_path(exercise), method: :delete, data: { confirm: '削除しますか？' }, class: "btn btn-danger" %>
+          </td>
+      </tr>
+    <% end %>
+  </tbody>
 </table>

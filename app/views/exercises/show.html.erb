@@ -1,7 +1,9 @@
 <h1>運動詳細</h1>
+ <%= link_to "戻る", exercises_path, class: "btn btn-secondary" %> 
+ 
 <table class="table table-striped table-dark">
     <tr>
         <th>運動</th>
-        <td></td>
+        <td><%= @exercise.work.name %></td>
     </tr>
 </table>
