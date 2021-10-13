@@ -8,4 +8,7 @@ class User < ApplicationRecord
          has_many :measurements
          has_many :posts
          has_many :likes
+         
+         mount_uploader :avatar, AvatarUploader
 end
+         
