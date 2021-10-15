@@ -1,3 +1,4 @@
+            <%= link_to "ホーム", statics_path, class: "btn btn-info" %>
 <h1 class="title">運動履歴一覧</h1>
 <%= link_to "運動登録", new_exercise_path, class: "btn btn-primary" %>
 <table class="table">
@@ -16,7 +17,6 @@
           <td><%= exercise.work.name %></td>
           <td></td>
           <td>
-            <%= link_to "詳細", exercise_path(exercise), class: "btn btn-info" %>
             <%= link_to "編集", edit_exercise_path(exercise), class: "btn btn-warning" %> 
             <%= link_to "削除", exercise_path(exercise), method: :delete, data: { confirm: '削除しますか？' }, class: "btn btn-danger" %>
           </td>

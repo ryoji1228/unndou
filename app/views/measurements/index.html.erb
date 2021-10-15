@@ -1,3 +1,5 @@
+            <%= link_to "ホーム", statics_path, class: "btn btn-info" %>
+
 <h2 class="title">体重記録</h2>
 
 <%= line_chart @measurements.pluck(:date, :weight) %>
