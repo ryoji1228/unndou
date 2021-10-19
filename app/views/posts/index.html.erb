@@ -12,14 +12,14 @@
   <tbody>
     <% @posts.each do |post| %>
       <tr>
-        <td>
+        <td style="width: 10%">
           <% if post.user.avatar? %>
             <%= image_tag post.user.avatar.url %>
           <% else %>
             <%= image_tag "default.jpg", :size => '100x100'%>
           <% end %>
         </td>
-        <td><%= post.text %></td>
+        <td style="width: 90%"><%= raw h(post.text).gsub(/\R/, '<br>') %></td>
       </tr>
     <% end %>
   </tbody>

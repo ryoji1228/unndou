@@ -6,3 +6,12 @@ img {
 	object-position:0px 0px;
 }
 
+table {
+  width: 100%;
+  table-layout: fixed;
+}
+
+table td {
+  /*word-break: break-all;*/
+  overflow-wrap : break-word;
+}
