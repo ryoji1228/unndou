@@ -1,16 +1,14 @@
+<h1 class="title">投稿</h1>
+
 <%= form_with model: @post, local: true do |f| %>
  <div class="form_with">
-   <%= f.text_field :text, class: "form_control" %>
+   <%= f.text_area :text, class: "form_control", size: "40x5" %>
  </div>
  
  <%= f.submit "投稿", class: "btn btn-primary"%>
 <% end %>
 
-
-
-            
 <table class="table">
- 
   <tbody>
     <% @posts.each do |post| %>
       <tr>
@@ -18,11 +16,10 @@
           <% if post.user.avatar? %>
             <%= image_tag post.user.avatar.url %>
           <% else %>
-            <%= image_tag "default.jpg", :size => '100x100' %>
+            <%= image_tag "default.jpg", :size => '100x100'%>
           <% end %>
-          </td>
-          <td><%= post.text %></td>
-
+        </td>
+        <td><%= post.text %></td>
       </tr>
     <% end %>
   </tbody>

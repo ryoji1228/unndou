@@ -1,6 +1,6 @@
 class MeasurementsController < ApplicationController
   def index
-    @measurements = Measurement.all
+    @measurements = current_user.measurements
     @measurement = Measurement.new
   end
   

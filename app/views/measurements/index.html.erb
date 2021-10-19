@@ -1,18 +1,16 @@
-            <%= link_to "ホーム", statics_path, class: "btn btn-info" %>
-
-<h2 class="title">体重記録</h2>
+<h1 class="title">体重記録</h1>
 
 <%= line_chart @measurements.pluck(:date, :weight) %>
 
 <%= form_with model: @measurement, local: true do |f| %>
- <div class="form_with">
+ <div class="form_with item">
    <label>日付</label>
    <%= f.date_field :date, class: "form_control" %>
  </div>
  
- <div class="form_with">
+ <div class="form_with item">
    <label>体重</label>
    <%= f.number_field :weight, class: "form_control" %>
  </div>
- <%= f.submit "登録", class: "btn btn-primary"%>
+ <%= f.submit "登録", class: "btn btn-primary item"%>
 <% end %>
