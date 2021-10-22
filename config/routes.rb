@@ -1,9 +1,11 @@
 Rails.application.routes.draw do
-  root to: 'statics#index', as: 'statics'
+  root to: 'goals#index', as: 'goals'
   
   devise_for :users
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   
+  resources :goals ,only: [:index, :create]
+
   
   resources :measurements ,only: [:index, :create, :new]
 

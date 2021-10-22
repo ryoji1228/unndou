@@ -1,0 +1,17 @@
+<div class="container">
+<%= form_with model: @goal, local: true do |f| %>
+
+ <div class="form-with item">
+   <label>期限</label>
+   <%= f.date_field :expiration_date, class: "form-control" %>
+ </div>
+ 
+ <div class="form-with item">
+   <label>体重</label>
+   <%= f.number_field :weight, class: "form-control" %>
+ </div>
+ 
+  <%= f.submit "登録", class: "btn btn-primary item"%>
+  
+<% end %>
+</div>
