@@ -1,8 +1,8 @@
 class GoalsController < ApplicationController
   
   def index
-    @goal = if current_user.goals.where('expiration_date >= ?', Date.current).exists?
-              current_user.goals.where('expiration_date >= ?', Date.current).first
+    @goal = if current_user.current_goal.present?
+              current_user.current_goal
             else
               Goal.new
             end

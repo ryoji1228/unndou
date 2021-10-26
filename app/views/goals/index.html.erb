@@ -26,11 +26,11 @@
     <% if @goal.id %>
       <h5 class="goals-item">
         <p>
-          目標まであと<%= (@goal.expiration_date - Date.current).to_i %>日
-         <%= @goal.weight - current_user.weight  %>kgです！ 
+          目標まであと<%= (@goal.expiration_date - Date.current).to_i %>日で
+         <%= (@goal.weight - current_user.weight).positive? ? '+' : '' %><%= @goal.weight - current_user.weight  %>kgです！ 
         </p>
         <p>
-          1日の摂取カロリーを何kcalに抑える（摂取する）と目標達成です！
+          1日の摂取カロリーを<%= current_user.ingestible_calories %>kcalに抑える（摂取する）と目標達成です！
         </p>
       </h5>
     <% end %>

@@ -11,5 +11,39 @@ class User < ApplicationRecord
          has_many :goals
          
          mount_uploader :avatar, AvatarUploader
+    
+    def current_goal
+      goals.where('expiration_date >= ?', Date.current).first
+    end
+    
+    def calorie_to_burn_per_day
+      return 0 unless current_goal
+      
+      diff_weight = current_goal.weight - self.weight
+      
+      (7200 * diff_weight) / (current_goal.expiration_date - Date.current)
+    end
+    
+    def basal_metabolism
+      # 基礎代謝量（男） ＝ 13.397 × 体重（kg） ＋ 4.799 × 身長（cm） ー 5.677 × 年齢 ＋ 88.362
+      # 基礎代謝量（女） ＝ 9.247 × 体重（kg） ＋ 3.098 × 身長（cm） ー 4.33 × 年齢 ＋ 447.593
+      if gender == '男'
+        13.397 * weight + 4.799 * height - 5.677 * age + 88.362
+      else
+        9.247 * weight + 3.098 * height - 4.33 * age + 447.593
+      end
+    end
+    
+    def age
+      ((Date.current - birthday) / 365).floor
+    end
+    
+    def calorie_burn_auto_per_day
+      1.2 * basal_metabolism
+    end
+    
+    def ingestible_calories
+      calorie_burn_auto_per_day + calorie_to_burn_per_day
+    end
 end
          
