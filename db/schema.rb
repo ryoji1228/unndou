@@ -28,6 +28,7 @@ ActiveRecord::Schema.define(version: 2021_10_22_121235) do
   end
 
   create_table "goals", force: :cascade do |t|
+    t.integer "user_id"
     t.date "expiration_date"
     t.integer "weight"
     t.datetime "created_at", null: false

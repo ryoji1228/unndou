@@ -28,4 +28,13 @@ table {
 
 .item {
   margin-top: 10px;
+  font-weight: bold
 }
+
+.container{
+  width: 100%;
+  max-width: 960px;
+  margin-right: auto;
+  margin-left: auto;
+}
+

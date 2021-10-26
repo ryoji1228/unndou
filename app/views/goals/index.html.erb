@@ -1,17 +1,40 @@
-<div class="container">
-<%= form_with model: @goal, local: true do |f| %>
-
- <div class="form-with item">
-   <label>期限</label>
-   <%= f.date_field :expiration_date, class: "form-control" %>
- </div>
- 
- <div class="form-with item">
-   <label>体重</label>
-   <%= f.number_field :weight, class: "form-control" %>
- </div>
- 
-  <%= f.submit "登録", class: "btn btn-primary item"%>
+<div class="container text-center">
   
-<% end %>
+  <h3 class="goals-title"><span>目標を決めよう！</span></h3>
+  
+  <div>
+    <div class="box2">
+      <% if @goal.id %>
+        <%= @goal.expiration_date %>までに<%= @goal.weight %>kgになる！
+      <% else %>
+       <%= form_with model: @goal, local: true do |f| %>
+  
+       <div class="form-with box-item">
+         <%= f.date_field :expiration_date %>までに
+       </div>
+      
+       <div class="form-with box-item">
+         <%= f.number_field :weight %> kgになる！
+       </div>
+      
+       <%= f.submit "登録", class: "btn btn-primary item"%>
+  
+       <% end %>
+      <% end %>
+    </div>
+
+    <% if @goal.id %>
+      <h5 class="goals-item">
+        <p>
+          目標まであと<%= (@goal.expiration_date - Date.current).to_i %>日
+         <%= @goal.weight - current_user.weight  %>kgです！ 
+        </p>
+        <p>
+          1日の摂取カロリーを何kcalに抑える（摂取する）と目標達成です！
+        </p>
+      </h5>
+    <% end %>
+      
+     </div>
+  </div>
 </div>
