@@ -13,7 +13,7 @@ class User < ApplicationRecord
          mount_uploader :avatar, AvatarUploader
     
     def current_goal
-      goals.where('expiration_date >= ?', Date.current).first
+      goals.where('expiration_date >= ?', Date.current).last
     end
     
     def calorie_to_burn_per_day
