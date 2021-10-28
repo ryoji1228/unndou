@@ -24,6 +24,10 @@ class User < ApplicationRecord
       (7200 * diff_weight) / (current_goal.expiration_date - Date.current)
     end
     
+    def weight_to_target
+      current_goal.weight - self.weight
+    end
+    
     def basal_metabolism
       # 基礎代謝量（男） ＝ 13.397 × 体重（kg） ＋ 4.799 × 身長（cm） ー 5.677 × 年齢 ＋ 88.362
       # 基礎代謝量（女） ＝ 9.247 × 体重（kg） ＋ 3.098 × 身長（cm） ー 4.33 × 年齢 ＋ 447.593
@@ -45,5 +49,20 @@ class User < ApplicationRecord
     def ingestible_calories
       calorie_burn_auto_per_day + calorie_to_burn_per_day
     end
+    
+    def ingestible_calories_rounding
+      ingestible_calories.round
+    end
+    
+    def suppress_ingest
+      if weight_to_target > 0
+        "摂取する"
+      else
+        "に抑える"
+      end
+     
+    end
+    
+    
 end
          

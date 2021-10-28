@@ -13,7 +13,7 @@ class ExercisesController < ApplicationController
     end
     
     def create
-        exercise_params = params.require(:exercise).permit(:date, :work_id)
+        exercise_params = params.require(:exercise).permit(:date, :work_id, :time)
         @exercise = Exercise.new(exercise_params.merge(user_id: current_user.id))
         @exercise.save!
         redirect_to exercises_path

@@ -14,7 +14,7 @@
       <tr>
           <td><%= exercise.date.strftime("%Y年%-m月%-d日") %></td>
           <td><%= exercise.work.name %></td>
-          <td></td>
+          <td><%= (exercise.work.cost * current_user.weight * exercise.time * 1.05).round %></td>
           <td>
             <%= link_to "編集", edit_exercise_path(exercise), class: "btn btn-warning" %> 
             <%= link_to "削除", exercise_path(exercise), method: :delete, data: { confirm: '削除しますか？' }, class: "btn btn-danger" %>
