@@ -15,7 +15,7 @@ class ExercisesController < ApplicationController
     def create
         exercise_params = params.require(:exercise).permit(:date, :work_id, :time)
         @exercise = Exercise.new(exercise_params.merge(user_id: current_user.id, date: Date.current))
-        @exercise.calories_burned = (@exercise.work.cost * current_user.weight * @exercise.time * 1.05).round
+        @exercise.calories_burned = (@exercise.work.cost * current_user.weight * (@exercise.time.to_f / 60) * 1.05).round
         @exercise.save!
         redirect_to exercises_path
     end
