@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_10_28_103154) do
+ActiveRecord::Schema.define(version: 2021_10_29_062329) do
 
   create_table "exercise_works", force: :cascade do |t|
     t.integer "exercise_id"
@@ -26,6 +26,7 @@ ActiveRecord::Schema.define(version: 2021_10_28_103154) do
     t.date "date"
     t.integer "work_id"
     t.integer "time"
+    t.integer "calories_burned"
   end
 
   create_table "goals", force: :cascade do |t|

@@ -46,8 +46,12 @@ class User < ApplicationRecord
       1.2 * basal_metabolism
     end
     
+    def calories_burned
+      exercises.where(date: Date.current).sum(:calories_burned)
+    end
+    
     def ingestible_calories
-      calorie_burn_auto_per_day + calorie_to_burn_per_day
+      calorie_burn_auto_per_day + calorie_to_burn_per_day + calories_burned
     end
     
     def ingestible_calories_rounding
