@@ -10,92 +10,90 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_10_29_062329) do
-
-  create_table "exercise_works", force: :cascade do |t|
-    t.integer "exercise_id"
-    t.integer "work_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+ActiveRecord::Schema.define(version: 20_211_029_062_329) do
+  create_table 'exercise_works', force: :cascade do |t|
+    t.integer 'exercise_id'
+    t.integer 'work_id'
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
   end
 
-  create_table "exercises", force: :cascade do |t|
-    t.integer "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.date "date"
-    t.integer "work_id"
-    t.integer "time"
-    t.integer "calories_burned"
+  create_table 'exercises', force: :cascade do |t|
+    t.integer 'user_id'
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
+    t.date 'date'
+    t.integer 'work_id'
+    t.integer 'time'
+    t.integer 'calories_burned'
   end
 
-  create_table "goals", force: :cascade do |t|
-    t.integer "user_id"
-    t.date "expiration_date"
-    t.integer "weight"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+  create_table 'goals', force: :cascade do |t|
+    t.integer 'user_id'
+    t.date 'expiration_date'
+    t.integer 'weight'
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
   end
 
-  create_table "likes", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "post_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+  create_table 'likes', force: :cascade do |t|
+    t.integer 'user_id'
+    t.integer 'post_id'
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
   end
 
-  create_table "measurements", force: :cascade do |t|
-    t.float "weight"
-    t.float "fat_rate"
-    t.integer "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.date "date"
+  create_table 'measurements', force: :cascade do |t|
+    t.float 'weight'
+    t.float 'fat_rate'
+    t.integer 'user_id'
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
+    t.date 'date'
   end
 
-  create_table "posts", force: :cascade do |t|
-    t.integer "user_id"
-    t.text "text"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+  create_table 'posts', force: :cascade do |t|
+    t.integer 'user_id'
+    t.text 'text'
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
   end
 
-  create_table "users", force: :cascade do |t|
-    t.string "name", null: false
-    t.string "email", default: "", null: false
-    t.string "encrypted_password", default: "", null: false
-    t.string "reset_password_token"
-    t.datetime "reset_password_sent_at"
-    t.datetime "remember_created_at"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.float "weight"
-    t.float "height"
-    t.string "avatar"
-    t.date "birthday"
-    t.string "gender"
-    t.index ["email"], name: "index_users_on_email", unique: true
-    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  create_table 'users', force: :cascade do |t|
+    t.string 'name', null: false
+    t.string 'email', default: '', null: false
+    t.string 'encrypted_password', default: '', null: false
+    t.string 'reset_password_token'
+    t.datetime 'reset_password_sent_at'
+    t.datetime 'remember_created_at'
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
+    t.float 'weight'
+    t.float 'height'
+    t.string 'avatar'
+    t.date 'birthday'
+    t.string 'gender'
+    t.index ['email'], name: 'index_users_on_email', unique: true
+    t.index ['reset_password_token'], name: 'index_users_on_reset_password_token', unique: true
   end
 
-  create_table "views", force: :cascade do |t|
-    t.string "email", default: "", null: false
-    t.string "encrypted_password", default: "", null: false
-    t.string "reset_password_token"
-    t.datetime "reset_password_sent_at"
-    t.datetime "remember_created_at"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["email"], name: "index_views_on_email", unique: true
-    t.index ["reset_password_token"], name: "index_views_on_reset_password_token", unique: true
+  create_table 'views', force: :cascade do |t|
+    t.string 'email', default: '', null: false
+    t.string 'encrypted_password', default: '', null: false
+    t.string 'reset_password_token'
+    t.datetime 'reset_password_sent_at'
+    t.datetime 'remember_created_at'
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
+    t.index ['email'], name: 'index_views_on_email', unique: true
+    t.index ['reset_password_token'], name: 'index_views_on_reset_password_token', unique: true
   end
 
-  create_table "works", force: :cascade do |t|
-    t.string "name"
-    t.integer "cost"
-    t.text "explanation"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+  create_table 'works', force: :cascade do |t|
+    t.string 'name'
+    t.integer 'cost'
+    t.text 'explanation'
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
   end
-
 end

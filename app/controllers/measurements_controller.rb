@@ -3,7 +3,7 @@ class MeasurementsController < ApplicationController
     @measurements = current_user.measurements
     @measurement = Measurement.new
   end
-  
+
   def create
     measurement_params = params.require(:measurement).permit(:weight)
     @measurement = Measurement.new(measurement_params.merge(user_id: current_user.id, date: Date.current))
