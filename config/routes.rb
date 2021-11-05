@@ -9,13 +9,7 @@ Rails.application.routes.draw do
   resources :measurements, only: %i[index create new]
 
   resources :exercises
-  resources :posts, only: %i[create index destroy]
+  resources :posts, only: %i[create index show destroy]
   resources :likes, only: %i[create destroy index]
 
-  namespace :admin do
-    resources :posts, only: %i[index destroy]
-    resources :users, only: %i[index destroy]
-    resources :auth, only: %i[new create]
-    resources :works
-  end
 end

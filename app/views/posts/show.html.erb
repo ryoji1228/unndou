@@ -1,14 +1,4 @@
-<h3 class="title">投稿</h3>
-
-
-<%= form_with model: @post, local: true do |f| %>
- <div class="form_with">
-   <%= f.text_area :text, class: "form_control", size: "40x5" %>
- </div>
- 
- <%= f.submit "投稿", class: "btn btn-primary"%>
-<% end %>
-
+<h3 class="title">投稿一覧</h3>
 <table class="table">
   <tbody>
     <% @posts.each do |post| %>
@@ -20,7 +10,10 @@
             <%= image_tag "default.jpg", :size => '100x100'%>
           <% end %>
         </td>
-        <td style="width: 90%"><%= raw h(post.text).gsub(/\R/, '<br>') %></td>
+        <td style="width: 90%">
+          <%= raw h(post.text).gsub(/\R/, '<br>') %>
+          <%= link_to "削除", post_path(post), method: :delete, data: { confirm: '削除しますか？' }, class: "btn btn-danger" %>
+        </td>
       </tr>
     <% end %>
   </tbody>
